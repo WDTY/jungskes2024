@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungskes 2024 Zermatt Wintersport Clock</title>
+    <style>
+        /* CSS for winter-themed design */
+        body {
+            background-color: #1e90ff; /* cool blue background */
+            color: #ffffff; /* white text */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #clock {
+            font-size: 2em;
+            margin-top: 50px;
+        }
+        
+        #map {
+            height: 400px;
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Jungskes 2024 Zermatt Wintersport Clock</h1>
+    <div id="clock">Loading...</div>
+    <div id="map"></div>
+
+    <script>
+        // JavaScript for countdown clock
+        function updateClock() {
+            var deadline = new Date("2024-02-02T04:00:00+01:00").getTime();
+            var now = new Date().getTime();
+            var timeRemaining = deadline - now;
+
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById("clock").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (timeRemaining < 0) {
+                clearInterval(updateInterval);
+                document.getElementById("clock").innerHTML = "EXPIRED";
+            }
+        }
+
+        var updateInterval = setInterval(updateClock, 1000);
+
+        // JavaScript for map
+        function initMap() {
+            var zermatt = { lat: 46.0207, lng: 7.7491 };
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: zermatt
+            });
+            var marker = new google.maps.Marker({
+                position: zermatt,
+                map: map,
+                title: "Zermatt"
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+
+</html>
