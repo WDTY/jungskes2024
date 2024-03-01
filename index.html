@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jungskes 2024 Zermatt Wintersport Clock</title>
+    <title>Jungskes 2024 Zermatt Wintersport Count Down Clock</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         /* CSS for winter-themed design */
@@ -39,7 +39,7 @@
     <script>
         // JavaScript for countdown clock
         function updateClock() {
-            var deadline = new Date("2024-02-02T04:00:00+01:00").getTime();
+            var deadline = new Date("2024-03-02T04:00:00+01:00").getTime();
             var now = new Date().getTime();
             var timeRemaining = deadline - now;
 
@@ -52,7 +52,7 @@
 
             if (timeRemaining < 0) {
                 clearInterval(updateInterval);
-                document.getElementById("clock").innerHTML = "EXPIRED";
+                document.getElementById("clock").innerHTML = "wintersport Time!!11!!";
             }
         }
 
